@@ -32,11 +32,11 @@ class Solver:
 
         return pattern
     
-    def get_expected_info(self, guess):
+    def get_expected_info(self, guess, verbose = False):
 
-        # print(f'computing expected info for: {guess}')
-
-        start = time.time()
+        if verbose:
+            print(f'computing expected info for: {guess}')
+            start = time.time()
 
         expectation = 0
 
@@ -47,7 +47,8 @@ class Solver:
 
             expectation += prob * info
 
-        # print(f'\rE_{guess}[info] = {expectation:.3f} (after {time.time()-start:.3f} s)', end='')
+        if verbose:
+            print(f'\rE_{guess}[info] = {expectation:.3f} (after {time.time()-start:.3f} s)', end='')
 
         return expectation
     
